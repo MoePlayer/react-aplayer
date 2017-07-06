@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "./dist/react-aplayer.min.js",
   "author": "Sabrina Luo <luohaojing@gmail.com>",
+  "homepage": "http://sabrinaluo.github.io/react-aplayer",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
