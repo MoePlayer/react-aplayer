@@ -1,0 +1,26 @@
+{
+  "name": "react-aplayer",
+  "version": "1.0.0",
+  "main": "./dist/react-aplayer.min.js",
+  "author": "Sabrina Luo <luohaojing@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sabrinaluo/react-aplayer.git"
+  },
+  "dependencies": {
+    "aplayer": "^1.6.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
