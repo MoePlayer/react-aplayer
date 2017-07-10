@@ -5,7 +5,7 @@ import APlayer from 'aplayer';
 const events = ['play', 'pause', 'playing', 'canplay', 'ended', 'error'];
 const capitalize = function(str) {
   return str[0].toUpperCase() + str.slice(1);
-}
+};
 
 export default class ReactAplayer extends React.Component {
   constructor(props) {
