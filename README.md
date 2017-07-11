@@ -8,6 +8,13 @@ Screen shot
 [![](https://camo.githubusercontent.com/a69d395460135e5542a3fd3f9a09d3817d17c228/68747470733a2f2f692e696d6775722e636f6d2f4a44724a5843722e706e67)]()
 
 ## Usage
+
+### Install
+```
+npm install react-aplayer --save
+```
+
+### Example
 ```
 import React from 'react';
 import ReactAplayer from 'react-aplayer';
