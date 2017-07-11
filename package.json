@@ -1,26 +1,37 @@
 {
   "name": "react-aplayer",
-  "version": "1.0.0",
-  "main": "./dist/react-aplayer.min.js",
+  "version": "0.1.0",
+  "main": "src/react-aplayer.js",
   "author": "Sabrina Luo <luohaojing@gmail.com>",
   "homepage": "http://sabrinaluo.github.io/react-aplayer",
+  "description": "A React wrapper component of APlayer",
+  "keywords": [
+    "aplayer",
+    "player",
+    "music",
+    "audio",
+    "react-aplayer"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/sabrinaluo/react-aplayer.git"
   },
+  "bugs": {
+    "url": "https://github.com/sabrinaluo/react-aplayer/issues"
+  },
   "dependencies": {
     "aplayer": "^1.6.0",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.5.10"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.7",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
-  "devDependencies": {
-    "react-scripts": "1.0.7"
-  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && webpack",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
