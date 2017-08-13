@@ -1,4 +1,4 @@
-# React-APlayer [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+# React-APlayer [![GitHub tag](https://img.shields.io/github/tag/sabrinaluo/react-aplayer.svg)](https://github.com/sabrinaluo/react-aplayer/releases) [![npm](https://img.shields.io/npm/dm/react-aplayer.svg)](https://www.npmjs.com/package/react-aplayer) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/sabrinaluo/react-aplayer/blob/master/LICENSE) 
 A React wrapper component of [APlayer](https://github.com/DIYgod/APlayer)
 
 ## Introduction
