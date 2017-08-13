@@ -1,7 +1,7 @@
 {
   "name": "react-aplayer",
-  "version": "0.1.0",
-  "main": "src/react-aplayer.js",
+  "version": "0.1.2",
+  "main": "dist/react-aplayer.min.js",
   "author": "Sabrina Luo <luohaojing@gmail.com>",
   "homepage": "http://sabrinaluo.github.io/react-aplayer",
   "description": "A React wrapper component of APlayer",

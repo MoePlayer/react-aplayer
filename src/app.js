@@ -26,7 +26,7 @@ export default class App extends React.Component {
         <h3>Normal</h3>
         <ReactAplayer {...appData.apNormal} onPlay={this.playHandler} onPause={this.pauseHandler} ref={(ap) => {
           const player = ap.state.control;
-         
+
           const methods = ['play', 'pause', 'toggle', 'volume', 'addMusic', 'destroy'];
           methods.forEach(method => {
             this[method] = player[method].bind(player);
