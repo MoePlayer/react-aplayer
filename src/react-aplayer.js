@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import APlayer from 'aplayer';
 
 const events = ['play', 'pause', 'playing', 'canplay', 'ended', 'error'];
-const capitalize = function(str) {
+const capitalize = function (str) {
   return str[0].toUpperCase() + str.slice(1);
 };
 
@@ -14,36 +14,44 @@ export default class ReactAplayer extends React.Component {
       control: null,
     };
   }
-
-  render() {
-    return (
-      <div className="aplayer" ref={(el) => {
-        this.el = el;
-      }}></div>
-    );
-  }
-
   componentDidMount() {
-    let ap = this.state.control = new APlayer({
+    this.aplay(this.props);
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.music) {
+      this.ap.destroy();
+      this.aplay(nextProps);
+    }
+  }
+  aplay(props) {
+    this.ap = new APlayer({
       element: this.el,
-      narrow: this.props.narrow,
-      autoplay: this.props.autoplay,
-      showlrc: this.props.showlrc,
-      mutex: this.props.mutex,
-      theme: this.props.theme,
-      preload: this.props.preload,
-      mode: this.props.mode,
-      listmaxheight: this.props.listmaxheight,
-      music: this.props.music
+      narrow: props.narrow,
+      autoplay: props.autoplay,
+      showlrc: props.showlrc,
+      mutex: props.mutex,
+      theme: props.theme,
+      preload: props.preload,
+      mode: props.mode,
+      listmaxheight: props.listmaxheight,
+      music: props.music
     });
 
     events.forEach(event => {
       let funcName = 'on' + capitalize(event);
       let callback = this.props[funcName];
       if (callback) {
-        ap.on(event, callback);
+        this.ap.on(event, callback);
       }
     });
+    this.state.control = this.ap;
+  }
+  render() {
+    return (
+      <div className="aplayer" ref={(el) => {
+        this.el = el;
+      }}></div>
+    );
   }
 }
 
@@ -56,7 +64,7 @@ ReactAplayer.propTypes = {
   preload: PropTypes.oneOf(['auto', 'metadata', 'none']),
   showlrc: PropTypes.number,
   theme: PropTypes.string,
-  music(props, propName){
+  music(props, propName) {
     const prop = props[propName];
     let audios;
     if (!prop) return new Error(propName + ' is required');
