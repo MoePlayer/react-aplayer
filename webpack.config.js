@@ -10,7 +10,7 @@ module.exports = {
     filename: 'react-aplayer.min.js',
     libraryTarget: 'umd'
   },
-  externals: ['react'],
+  externals: ['react', 'prop-types', 'aplayer'],
   module: {
     rules: [
       {
