@@ -1,7 +1,7 @@
 module.exports = {
   overrides: [
     {
-      files: [".prettierrc", ".eslintrc", "src/**/*.json"],
+      files: ["src/**/*.json"],
       options: { parser: "json" }
     }
   ]
