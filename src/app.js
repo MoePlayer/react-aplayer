@@ -1,78 +1,76 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import ReactAplayer from './react-aplayer';
-import appData from './data.json';
+import appData from './data';
 import './app.css';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  playHandler() {
+class App extends PureComponent {
+  // event binding example
+  onPlay = () => {
     console.log('on play');
-  }
+  };
 
-  pauseHandler() {
+  onPause = () => {
     console.log('on pause');
-  }
+  };
+
+  // example of access aplayer instance
+  initAp1 = ap => {
+    this.ap1 = ap;
+  };
 
   render() {
     return (
-      <div className="container">
+      <div className="landing">
         <h1 className="main-title">React Aplayer</h1>
-        <h2>A react wrapper of Aplayer</h2>
+        <h3>🍭 Wow, A react wrapper of the beautiful HTML5 music Aplayer</h3>
 
-        <h3>Normal</h3>
-        <ReactAplayer
-          {...appData.apNormal}
-          onPlay={this.playHandler}
-          onPause={this.pauseHandler}
-          ref={ap => {
-            const player = ap.state.control;
+        <div className="aplayer-wrap">
+          {/* example with detailed props */}
+          <ReactAplayer
+            {...appData.apLrcList}
+            onInit={this.initAp1}
+            onPlay={this.onPlay}
+            onPause={this.onPause}
+          />
+          {/* example of access aplayer instance API */}
+          <span className="footer">
+            {' '}
+            click button to try player control ->{' '}
+          </span>
+          <button onClick={() => this.ap1.toggle()}>toggle()</button>
+        </div>
 
-            const methods = [
-              'play',
-              'pause',
-              'toggle',
-              'volume',
-              'addMusic',
-              'destroy',
-            ];
-            methods.forEach(method => {
-              this[method] = player[method].bind(player);
-            });
-          }}
-        />
-        <button onClick={() => this.play()}>play</button>
-        <button onClick={() => this.play(100)}>play(100)</button>
-        <button onClick={() => this.pause()}>pause</button>
-        <button onClick={() => this.toggle()}>toggle()</button>
-        <button onClick={() => this.volume(0.1)}>volume(0.1)</button>
-        <button onClick={() => this.addMusic(appData.apList.music)}>
-          addMusic()
-        </button>
-        <button onClick={() => this.destroy()}>destroy()</button>
+        {/* example with deconstructing props */}
+        <ReactAplayer {...appData.apFixedLrcList} />
 
-        <h3>With playlist</h3>
-        <ReactAplayer
-          {...appData.apList}
-          ref={ap => {
-            const player = ap.state.control;
-            this.setMusic = player.setMusic.bind(player);
-          }}
-        />
-        <button onClick={() => this.setMusic(2)}>setMusic(2)</button>
+        <div className="landing-buttons">
+          <a
+            className="landing-button"
+            target="_blank"
+            href="https://github.com/MoePlayer/react-aplayer"
+          >
+            GitHub
+          </a>
 
-        <h3>With lyrics</h3>
-        <ReactAplayer {...appData.apLrc} />
+          <a
+            className="landing-button"
+            target="_blank"
+            href="https://github.com/MoePlayer/react-aplayer#react-aplayer"
+          >
+            React-Aplayer Docs
+          </a>
 
-        <h3>With playlist and lyrics</h3>
-        <ReactAplayer {...appData.apLrcList} />
-
-        <h3>Narrow</h3>
-        <ReactAplayer music={appData.apNormal.music} narrow={true} />
+          <a
+            className="landing-button"
+            target="_blank"
+            href="https://aplayer.js.org/#/home"
+          >
+            Aplayer Docs
+          </a>
+        </div>
       </div>
     );
   }
 }
+
+export default App;
