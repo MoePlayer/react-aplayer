@@ -41,6 +41,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "react-scripts build && gh-pages -d build",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,css,json}\" \".*rc.js\""
+    "prettier": "prettier --write \"src/**/*.{js,jsx,css,json}\" \"*.js\""
   }
 }

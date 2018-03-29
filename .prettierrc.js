@@ -13,7 +13,7 @@ module.exports = {
       }
     },
     {
-      files: ['.*rc.js'],
+      files: ['*.js', '.*.js'],
       options: {
         trailingComma: 'none'
       }
