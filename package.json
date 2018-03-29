@@ -1,6 +1,6 @@
 {
   "name": "react-aplayer",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "main": "dist/react-aplayer.min.js",
   "author": "Sabrina Luo <luohaojing@gmail.com>",
   "homepage": "http://sabrinaluo.github.io/react-aplayer",
@@ -21,20 +21,26 @@
     "url": "https://github.com/sabrinaluo/react-aplayer/issues"
   },
   "dependencies": {
-    "aplayer": "^1.6.0",
-    "prop-types": "^15.5.10"
+    "aplayer": "^1.10.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "gh-pages": "^1.1.0",
+    "prettier": "^1.11.1",
+    "react-dom": "^16.2.0",
+    "react-scripts": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && webpack",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "react-scripts build && gh-pages -d build",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,css,json}\" \"*.js\""
   }
 }
