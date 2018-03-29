@@ -49,7 +49,6 @@ p {
     right: 0;
     top: 0;
     color: #00d8ff;
-
 }
 
 .github-corner:hover .octo-arm {
@@ -57,13 +56,16 @@ p {
 }
 
 @keyframes octocat-wave {
-    0%, 100% {
+    0%,
+    100% {
         transform: rotate(0);
     }
-    20%, 60% {
+    20%,
+    60% {
         transform: rotate(-25deg);
     }
-    40%, 80% {
+    40%,
+    80% {
         transform: rotate(10deg);
     }
 }

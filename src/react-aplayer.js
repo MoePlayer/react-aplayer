@@ -17,14 +17,17 @@ export default class ReactAplayer extends React.Component {
 
   render() {
     return (
-      <div className="aplayer" ref={(el) => {
-        this.el = el;
-      }}></div>
+      <div
+        className="aplayer"
+        ref={el => {
+          this.el = el;
+        }}
+      />
     );
   }
 
   componentDidMount() {
-    let ap = this.state.control = new APlayer({
+    let ap = (this.state.control = new APlayer({
       element: this.el,
       narrow: this.props.narrow,
       autoplay: this.props.autoplay,
@@ -34,8 +37,8 @@ export default class ReactAplayer extends React.Component {
       preload: this.props.preload,
       mode: this.props.mode,
       listmaxheight: this.props.listmaxheight,
-      music: this.props.music
-    });
+      music: this.props.music,
+    }));
 
     events.forEach(event => {
       let funcName = 'on' + capitalize(event);
@@ -56,7 +59,7 @@ ReactAplayer.propTypes = {
   preload: PropTypes.oneOf(['auto', 'metadata', 'none']),
   showlrc: PropTypes.number,
   theme: PropTypes.string,
-  music(props, propName){
+  music(props, propName) {
     const prop = props[propName];
     let audios;
     if (!prop) return new Error(propName + ' is required');
@@ -91,5 +94,5 @@ ReactAplayer.defaultProps = {
   narrow: false,
   preload: 'auto',
   showlrc: 0,
-  theme: '#b7daff'
+  theme: '#b7daff',
 };
