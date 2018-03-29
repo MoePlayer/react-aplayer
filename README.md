@@ -1,5 +1,6 @@
 
 # React-APlayer
+[![npm](https://img.shields.io/npm/v/react-aplayer.svg)](https://www.npmjs.com/package/react-aplayer)
 [![GitHub tag](https://img.shields.io/github/tag/sabrinaluo/react-aplayer.svg)](https://github.com/sabrinaluo/react-aplayer/releases) [![npm](https://img.shields.io/npm/dm/react-aplayer.svg)](https://www.npmjs.com/package/react-aplayer) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/sabrinaluo/react-aplayer/blob/master/LICENSE)
 
 🍭 Wow, A react wrapper of the beautiful HTML5 music [APlayer](https://github.com/MoePlayer/APlayer)
