@@ -20,8 +20,26 @@ h1 {
 }
 
 h2 {
-    font-size: 22px;
+    position: relative;
+    line-height: 20px;
+    font-size: 20px;
     color: #555;
+    vertical-align: middle;
+    font-weight: normal;
+}
+
+.react-logo {
+    height: 30px;
+    position: relative;
+    right: 10px;
+    top: 8px;
+}
+
+.icon-lollipop {
+    font-size: 33px;
+    position: relative;
+    left: 10px;
+    top: 6px;
 }
 
 h3 {
@@ -110,12 +128,14 @@ p {
     -webkit-user-select: none;
     user-select: none;
 }
+
 .features {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 16px;
     line-height: 1.7;
 }
+
 .landing-button {
     border: 1px solid #ccc;
     border-radius: 33px;

@@ -1,11 +1,18 @@
-# React-APlayer [![GitHub tag](https://img.shields.io/github/tag/sabrinaluo/react-aplayer.svg)](https://github.com/sabrinaluo/react-aplayer/releases) [![npm](https://img.shields.io/npm/dm/react-aplayer.svg)](https://www.npmjs.com/package/react-aplayer) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/sabrinaluo/react-aplayer/blob/master/LICENSE) 
-A React wrapper component of [APlayer](https://github.com/DIYgod/APlayer)
+
+# React-APlayer
+[![npm](https://img.shields.io/npm/v/react-aplayer.svg)](https://www.npmjs.com/package/react-aplayer)
+[![GitHub tag](https://img.shields.io/github/tag/sabrinaluo/react-aplayer.svg)](https://github.com/sabrinaluo/react-aplayer/releases) [![npm](https://img.shields.io/npm/dm/react-aplayer.svg)](https://www.npmjs.com/package/react-aplayer) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/sabrinaluo/react-aplayer/blob/master/LICENSE)
+
+🍭 Wow, A react wrapper of the beautiful HTML5 music [APlayer](https://github.com/MoePlayer/APlayer)
 
 ## Introduction
-[Demo](http://sabrinaluo.com/react-aplayer/)
+[Demo](http://sabrinaluo.github.io/react-aplayer/)
 
-Screen shot
-[![](https://camo.githubusercontent.com/a69d395460135e5542a3fd3f9a09d3817d17c228/68747470733a2f2f692e696d6775722e636f6d2f4a44724a5843722e706e67)]()
+### List with lyrics
+![image](https://user-images.githubusercontent.com/5300359/38107595-f7fd325a-33c4-11e8-9a9a-5d60613c9458.png)
+
+### :star2: Fixed Mode
+![image](https://user-images.githubusercontent.com/5300359/38107623-11ad0874-33c5-11e8-8e0b-1e9625571e4b.png)
 
 ## Usage
 
@@ -15,92 +22,73 @@ npm install react-aplayer --save
 ```
 
 ### Example
-```
+Check `src/app.js` to get more example;
+
+```javascript
 import React from 'react';
 import ReactAplayer from 'react-aplayer';
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  playHandler() {
+  // event binding example
+  onPlay = () => {
     console.log('on play');
-  }
+  };
 
-  pauseHandler() {
+  onPause = () => {
     console.log('on pause');
-  }
+  };
+
+  // example of access aplayer instance
+  onInit = ap => {
+    this.ap = ap;
+  };
 
   render() {
     const props = {
-      "autoplay": true,
-      "mutex": true,
-      "preload": "metadata",
-      "music": {
-        "author": "Hans Zimmer/Richard Harvey",
-        "url": "http://devtest.qiniudn.com/Preparation.mp3",
-        "pic": "http://devtest.qiniudn.com/Preparation.jpg"
-      }
+      theme: '#F57F17',
+      lrcType: 3,
+      audio: [
+        {
+          name: '光るなら',
+          artist: 'Goose house',
+          url: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.mp3',
+          cover: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.jpg',
+          lrc: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.lrc',
+          theme: '#ebd0c2'
+        }
+      ]
     };
 
     return (
-      <ReactAplayer {...props} onPlay={this.playHandler} onPause={this.pauseHandler}/>
+      <div>
+        <ReactAplayer
+          {...props}
+          onInit={this.onInit}
+          onPlay={this.onPlay}
+          onPause={this.onPause}
+        />
+        {/* example of access aplayer instance API */}
+        <button onClick={() => this.ap.toggle()}>toggle</button>
+      <div>
     );
   }
 }
 ```
 
 ### Props
-Props are almost the same with original APlayer, please check the [docs](https://aplayer.js.org/docs/#/) for more details.
+**`onInit`** as a callback function will be invoked when aplayer instance get initialized and with the instance as parameter, through which you can get the full control of aplayer API. *see `onInit` in above example*
 
-| Name | Type | Required | Default | Description |
-|---|---|---|---|---|
-|autoplay| Boolean | N |`false` | |
-|listmaxheight| String | N | N/A |e.g. `'80px'` |
-|mode| String | |`'circulation'`|One of `'circulation'`, `'order'`, `'random'`, `'single'`|
-|mute| Boolean | |`false`| |
-|narrow| Boolean | |`false`| |
-|preload| String | |`'auto'`|One of `'auto'`, `'metadata'`, `'none'`|
-|showlrc| Number | |`0`| |
-|theme| String | |`'#b7daff'`| |
-|music| Array \| Object | Y | N/A | |
-|music.url| String | Y | | |
-|music.title| String | | N/A | |
-|music.author| String | | N/A | |
-|music.pic| String |  | N/A | |
-|music.lrc| String |  | N/A | |
+Other props are exactly the same with original APlayer, please check the [docs](https://aplayer.js.org/#/home) for more details.
 
 ### Event Handlers
-Event handlers are triggered when corresponding event happens, it takes a callback function as param.
+Event handlers are triggered when corresponding event happens, it takes a callback function as parameter.
 
-|Name|Type | Description |
-|---|---|---|
-|onPlay| Func | |
-|onCanplay| Func | |
-|onPlay| Func | |
-|onPause| Func | |
-|onPlaying| Func | |
-|onEnded| Func | |
-|onError| Func | |
+All the event handlers in `react-aplayer` are in a format of captalized event name prefixed with `on`, e.g. in aplayer, event `play` will be `onPlay` in react-aplayer,
 
-### APlayer Instance & Bind Methods
-APlayer Instance can be accessed through `.state.control`.
+Please check the [docs](https://aplayer.js.org/#/home?id=event-binding) for more events.
 
-```
-<ReactAplayer {...props} ref={(ap) => {
-          const aplayer = ap.state.control;
-        }/>
-```
-
-To expose APlayer methods on React level, binding is needed.
-```
-<ReactAplayer {...props} ref={(ap) => {
-          const player = ap.state.control;
-          this.play = player.play.bind(player);
-        }}/>
-```
+### APlayer Instance
+APlayer Instance can be accessed through `onInit`
 
 ## LICENSE
 [MIT License](https://github.com/sabrinaluo/react-aplayer/blob/master/LICENSE)

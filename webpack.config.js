@@ -7,10 +7,11 @@ module.exports = {
   entry: './src/react-aplayer.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'react-aplayer.min.js',
+    filename: 'react-aplayer.min.js', //todo output not min
     libraryTarget: 'umd'
   },
   externals: ['react', 'prop-types', 'aplayer'],
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -19,9 +20,13 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['es2015', 'react']
+            presets: ['es2015', 'stage-2', 'react']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -32,11 +37,12 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
-        comparisons: false,
+        comparisons: false
       },
       output: {
-        comments: false,
+        comments: false
       },
-      sourceMap: true,
-    })]
+      sourceMap: true
+    })
+  ]
 };
