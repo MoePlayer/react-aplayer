@@ -69,7 +69,7 @@ export default class App extends React.Component {
         />
         {/* example of access aplayer instance API */}
         <button onClick={() => this.ap.toggle()}>toggle</button>
-      <div>
+      </div>
     );
   }
 }
