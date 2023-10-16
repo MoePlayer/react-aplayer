@@ -54,7 +54,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "deploy": "webpack --mode production && gh-pages -d build",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css,json}\" \"*.js\""
