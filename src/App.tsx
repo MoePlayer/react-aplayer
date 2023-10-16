@@ -1,4 +1,4 @@
-import React, { PureComponent, useState } from 'react';
+import React, { useState } from 'react';
 import ReactAplayer from './ReactAplayer';
 import appData from './data';
 import './app.css';
