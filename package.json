@@ -1,9 +1,15 @@
 {
   "name": "react-aplayer",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "dist/react-aplayer.min.js",
   "author": "Sabrina Luo <luohaojing@gmail.com>",
-  "homepage": "http://sabrinaluo.github.io/react-aplayer",
+  "maintainers": [
+    {
+      "name": "Nikaidou Haruki",
+      "email": "haruki@plr.moe"
+    }
+  ],
+  "homepage": "https://sabrinaluo.github.io/react-aplayer",
   "description": "A React wrapper component of APlayer",
   "keywords": [
     "aplayer",
@@ -21,28 +27,36 @@
     "url": "https://github.com/sabrinaluo/react-aplayer/issues"
   },
   "dependencies": {
-    "aplayer": "^1.10.0",
-    "prop-types": "^15.6.1",
-    "react": "^16.2.0"
+    "aplayer": "^1.10.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "gh-pages": "^1.1.0",
-    "prettier": "^1.11.1",
-    "react-dom": "^16.2.0",
-    "react-scripts": "^1.1.1"
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
+    "@babel/preset-typescript": "^7.23.2",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.51.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "html-webpack-plugin": "^5.5.3",
+    "prettier": "^3.0.3",
+    "style-loader": "^3.3.3",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && webpack",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "react-scripts build && gh-pages -d build",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,css,json}\" \"*.js\""
+    "start": "webpack-dev-server",
+    "build": "webpack --mode production",
+    "deploy": "webpack --mode production && gh-pages -d build",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx,css,json}\" \"*.js\""
   }
 }
