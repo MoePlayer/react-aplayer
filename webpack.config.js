@@ -7,7 +7,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'react-aplayer.min.js',
-    sourceMapFilename: 'react-aplayer.min.js.map'
+    sourceMapFilename: 'react-aplayer.min.js.map',
+
   },
   devtool: 'source-map',
   resolve: {
@@ -18,7 +19,7 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: 'ts-loader'
       },
       {
         test: /\.css$/,
