@@ -1,28 +1,25 @@
 'use strict';
 
-const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: './src/react-aplayer.js',
+  entry: './src/ReactAplayer.tsx',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'react-aplayer.min.js', //todo output not min
-    libraryTarget: 'umd'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'react-aplayer.min.js',
+    sourceMapFilename: 'react-aplayer.min.js.map',
+
   },
-  externals: ['react', 'prop-types', 'aplayer'],
   devtool: 'source-map',
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
+  },
   module: {
     rules: [
       {
-        test: /(\.js)|(\.jsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015', 'stage-2', 'react']
-          }
-        }
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: 'ts-loader'
       },
       {
         test: /\.css$/,
@@ -30,19 +27,11 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.LoaderOptionsPlugin({
-      debug: false
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        comparisons: false
-      },
-      output: {
-        comments: false
-      },
-      sourceMap: true
-    })
-  ]
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public')
+    },
+    compress: true,
+    port: 9000
+  }
 };
